@@ -7,21 +7,75 @@
     <!-- daisy UI and tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
-
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/a9d03710c7.js" crossorigin="anonymous"></script>
+    <!-- custom CSS -->
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-    <header>       
-
+    <!-- header -->
+    <header>  
+        <!-- navbar -->
+        <div class="navbar bg-base-100 justify-between ">
+            <div class="navbar-start">
+              <div class="dropdown">
+                <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M4 6h16M4 12h8m-8 6h16" />
+                  </svg>
+                </div>
+                <ul
+                  tabindex="0"
+                  class="menu menu-sm dropdown-content bg-base-100  mt-3  p-2  space-y-2">
+                  <li data-tippy-content="Home" class="bg-gray-100 hover:bg-gray-500 px-0 py-2 border border-gray-300 rounded-full text-lg"><a href="#"><i class="fa-solid fa-house"></i></a></li>
+                  <li  data-tippy-content="Edit" class="bg-gray-100 hover:bg-gray-500 px-0 py-2 border border-gray-300 rounded-full text-lg"><a href="#"><i class="fa-solid fa-pen"></i></a></li>
+                    <li data-tippy-content="Add" class="bg-gray-100 hover:bg-gray-500 px-0 py-2 border border-gray-300 rounded-full text-lg"><a href="#"><i class="fa-solid fa-user-plus"></i></a></li>
+                    <li data-tippy-content="Posts" class="bg-gray-100 hover:bg-gray-500 px-0 py-2 border border-gray-300 rounded-full text-lg"><a href="#"><i class="fa-solid fa-flag"></i></a></li>
+                  
+                </ul>
+              </div>
+              <a class="btn btn-ghost text-xl"><img src="images/logo.png" alt=""></a>
+            </div>
+            <div class="navbar-end hidden lg:flex">
+                <ul class="menu hidden md:flex flex-row lg:flex-row  space-x-2 ">
+                    <li data-tippy-content="Home" class="bg-gray-100 hover:bg-gray-500 px-0 py-2 border border-gray-300 rounded-full text-lg"><a href="#"><i class="fa-solid fa-house"></i></a></li>
+                    <li data-tippy-content="Edit" class="bg-gray-100 hover:bg-gray-500 px-0 py-2 border border-gray-300 rounded-full text-lg"><a href="#"><i class="fa-solid fa-pen"></i></a></li>
+                    <li data-tippy-content="Add" class="bg-gray-100 hover:bg-gray-500 px-0 py-2 border border-gray-300 rounded-full text-lg"><a href="#"><i class="fa-solid fa-user-plus"></i></a></li>
+                    <li data-tippy-content="Posts" class="bg-gray-100 hover:bg-gray-500 px-0 py-2 border border-gray-300 rounded-full text-lg"><a href="#"><i class="fa-solid fa-flag"></i></a></li>
+                    
+                  </ul>
+            </div>
+            <div class=" lg:ml-2">
+                <a class="btn bg-[#797DFC] text-white px-8 rounded-full">Sign In</a>
+            </div>
+          </div>
+        
     </header>
 
+    <!-- main -->
     <main>
-
+        
     </main>
 
+    <!-- footer -->
     <footer>
 
     </footer>
 
+    
+    <!-- tippy.js -->
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+    <!-- adding js file -->
     <script src="js/scripts.js"></script>
 </body>
 </html>
