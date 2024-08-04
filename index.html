@@ -11,10 +11,23 @@
     <script src="https://kit.fontawesome.com/a9d03710c7.js" crossorigin="anonymous"></script>
     <!-- custom CSS -->
     <link rel="stylesheet" href="styles/style.css">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: '#da373d',
+              'btn-primary': '#797DFC',
+            }
+          }
+        }
+      }
+    </script>
 </head>
-<body>
+<body class="container mx-auto font-mulish">
+    <!-- Antique Talks -->
     <!-- header -->
-    <header>  
+    <header class="">  
         <!-- navbar -->
         <div class="navbar bg-base-100 justify-between ">
             <div class="navbar-start">
@@ -43,7 +56,7 @@
                   
                 </ul>
               </div>
-              <a class="btn btn-ghost text-xl"><img src="images/logo.png" alt=""></a>
+              <a class="btn btn-ghost text-3xl lg:text-4xl font-black">AnTique</a>
             </div>
             <div class="navbar-end hidden lg:flex">
                 <ul class="menu hidden md:flex flex-row lg:flex-row  space-x-2 ">
@@ -55,14 +68,54 @@
                   </ul>
             </div>
             <div class=" lg:ml-2">
-                <a class="btn bg-[#797DFC] text-white px-8 rounded-full">Sign In</a>
+                <a class="btn bg-btn-primary text-white px-8 rounded-full">Sign In</a>
+                
             </div>
           </div>
         
     </header>
 
     <!-- main -->
-    <main>
+    <main class="">
+
+        <!-- banner section -->
+         <section  class="lg:mt-6 m-3 lg:m-0">
+            <!-- banner container -->
+            <div class="flex flex-col md:flex-row md:justify-between lg:flex-row lg:justify-between p-5 lg:p-14 mx-auto max-w-[1170px] rounded-[30px]  bg-[url('/images/bgbanner.png')] bg-[#12132D]  bg-no-repeat">
+                <!-- left div -->
+                <div class="text-white space-y-[18px]">
+                    <h1 class="text-4xl lg:text-6xl font-black text-center md:text-left lg:text-left">Welcome to the <br>
+                       <span class="text-[#686cc0]">AnTique</span> Talks</h1>
+                    <p class="text-center lg:text-left">Share your favorite opinion and win and wp <br> forum coffee mug!</p>
+                    
+                    <!-- searchbar -->
+                     
+                    
+                    <div class="flex items-center ">
+                      <input type="text" placeholder="Search here anything" class="input input-bordered w-full max-w-xs text-black rounded-full px-5 py-7 " />
+                        
+                    
+                     
+                      <button class="btn lg:absolute lg:left-[454px]  bg-btn-primary text-white  px-7 py-0 border-none rounded-full">Search</button>
+                    
+                
+                      
+                    </div>
+                    
+                      
+                    
+                    
+                </div>
+                <!-- right div  class=" " -->
+                <div class="bg-white p-10 rounded-3xl space-y-6 mt-10 lg:mt-0 text-center">
+                  <h3 class="text-xl font-bold">Registered Users <span class="ml-3">01</span></h3>
+                  <h3 class="text-xl font-bold">Forum <span class="ml-28">05</span></h3>
+                  <h3 class="text-xl font-bold">Topics <span class="ml-28">01</span></h3>
+                  <h3 class="text-xl font-bold">Replies <span class="ml-[104px]">01</span></h3>
+                </div>
+            </div>
+
+         </section>
         
     </main>
 
