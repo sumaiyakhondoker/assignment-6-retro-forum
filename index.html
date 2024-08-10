@@ -99,11 +99,11 @@
                     
                     <!-- searchbar -->
                      <div class="flex items-center ">
-                      <input type="text" placeholder="Search here anything" class="input input-bordered w-full max-w-xs text-black rounded-full px-5 py-7 " />
+                      <input id="search-field" type="text" placeholder="Search here anything" class="input input-bordered w-full max-w-xs text-black rounded-full px-5 py-7"/>
                         
                     
                      
-                      <button class="btn lg:absolute lg:left-[430px]  bg-btn-primary text-white  px-7 py-0 border-none rounded-full text-lg font-bold">Search</button>
+                      <button onclick="handleSearchBtn()" class="btn lg:absolute lg:left-[430px]  bg-btn-primary text-white  px-7 py-0 border-none rounded-full text-lg font-bold">Search</button>
                     
                 
                       
@@ -132,8 +132,16 @@
                 <p class="text-description-color max-w-2xl mx-auto mt-4 font-inter">Yes, you can run unit tests and view the results directly within the app. The integrated testing features allow for a streamlined .</p>
               </div>
 
+              <!-- loading -->
+              <div id="loading" class="text-center my-40 hidden">
+                <span class="loading loading-dots loading-lg"></span>
+
+              </div>
+
               <!--  container -->
                <div class="flex flex-col md:flex-row lg:flex-row gap-6 ">
+
+                
 
                 <!-- left div -->
                  <div class="w-full lg:w-4/6 space-y-6 " id="posts-container">

@@ -1,87 +1,98 @@
 tippy("[data-tippy-content]");
 
 const loadPosts = async () =>{
+
+    toggleLoading(true)
     const res = await fetch('https://openapi.programming-hero.com/api/retro-forum/posts');
     const data = await res.json()
     // console.log(data);
     const posts = data.posts;
     // console.log(posts);
-    displayPosts(posts)
+    setTimeout(()=>{
+        displayPosts(posts)
+    }, 2000)
 }
+
 
 const displayPosts = (posts) =>{
-// console.log(posts);
-
-
-
-const postsContainer = document.getElementById('posts-container');
-posts.forEach(post =>{
-    // console.log(post.id);
-    if(post.isActive){
-        // console.log('online');
-        const postCard = document.createElement('div') 
-
-    postCard.classList =  `flex gap-2 md:gap-4 lg:gap-6 p-4 md:p-6 lg:p-10 border rounded-3xl shadow-xl hover:border-[#797DFC] bg-[#12132D0D] hover:bg-[#797DFC1A]`
-    postCard.innerHTML = `
-    <div  class="absolute left-[66px]  lg:left-[272px] border-2 border-white h-[3px] lg:h-[5px] w-[3px] lg:w-[5px] bg-green-500 p-2 rounded-full "></div>
-    <img class="h-[50px] w-[50px] lg:h-[70px] lg:w-[70px] rounded-md lg:rounded-2xl" src="${post.image}" alt="">
-    </div>
-    <div class="w-full">
-    <p class="text-[#12132DCC] font-inter text-sm font-medium mb-0"><span class="mr-5"># ${post.category}</span>Author: ${post.author.name}</p>
-    <h3 class="text-xl font-bold text-color-primary mt-2 mb-3">${post.title}</h3>
-    <p class="font-inter mt-0 pb-5 border-b-2 border-dashed  border-gray-300 text-description-color ">${post.description}</p>
-
-    <div class=" flex justify-between items-center pt-5 w-full">
-        <div class="font-inter text-description-color">
-        <span><i class="fa-regular fa-message"></i> ${post.comment_count}</span>
-        <span><i class="fa-regular fa-eye ml-6"></i> ${post.view_count}</span>
-        <span><i class="fa-regular fa-clock ml-6"></i> ${post.posted_time} min</span>
-        
+    // console.log(posts);
+    
+    
+    
+    const postsContainer = document.getElementById('posts-container');
+    posts.forEach(post =>{
+        // console.log(post.id);
+        if(post.isActive){
+            // console.log('online');
+            const postCard = document.createElement('div') 
+    
+        postCard.classList =  `flex gap-2 md:gap-4 lg:gap-6 p-4 md:p-6 lg:p-10 border rounded-3xl shadow-xl hover:border-[#797DFC] bg-[#12132D0D] hover:bg-[#797DFC1A]`
+        postCard.innerHTML = `
+        <div  class="absolute left-[66px]  lg:left-[272px] border-2 border-white h-[3px] lg:h-[5px] w-[3px] lg:w-[5px] bg-green-500 p-2 rounded-full "></div>
+        <img class="h-[50px] w-[50px] lg:h-[70px] lg:w-[70px] rounded-md lg:rounded-2xl" src="${post.image}" alt="">
         </div>
-        <div>
-        
-        <button onclick = "handleMarkAsReadBtn('${post?.title}', '${post?.view_count}')" class="btn bg-green-500 text-white px-4 rounded-full read-btn"><i class=" fa-solid fa-envelope-open"></i></button>  
+        <div class="w-full">
+        <p class="text-[#12132DCC] font-inter text-sm font-medium mb-0"><span class="mr-5"># ${post.category}</span>Author: ${post.author.name}</p>
+        <h3 class="text-xl font-bold text-color-primary mt-2 mb-3">${post.title}</h3>
+        <p class="font-inter mt-0 pb-5 border-b-2 border-dashed  border-gray-300 text-description-color ">${post.description}</p>
+    
+        <div class=" flex justify-between items-center pt-5 w-full">
+            <div class="font-inter text-description-color">
+            <span><i class="fa-regular fa-message"></i> ${post.comment_count}</span>
+            <span><i class="fa-regular fa-eye ml-6"></i> ${post.view_count}</span>
+            <span><i class="fa-regular fa-clock ml-6"></i> ${post.posted_time} min</span>
+            
+            </div>
+            <div>
+            
+            <button onclick = "handleMarkAsReadBtn('${post?.title}', '${post?.view_count}')" class="btn bg-green-500 text-white px-4 rounded-full read-btn"><i class=" fa-solid fa-envelope-open"></i></button>  
+            </div>
+            
         </div>
-        
-    </div>
-    </div>
-    `;
-    postsContainer.appendChild(postCard)
-    }else{
-        // console.log('offline');
-        const postCard = document.createElement('div') 
-
-    postCard.classList =  `flex gap-2 md:gap-4 lg:gap-6 p-4 md:p-6 lg:p-10 border rounded-3xl shadow-xl hover:border-[#797DFC] bg-[#12132D0D] hover:bg-[#797DFC1A]`
-    postCard.innerHTML = `
-    <div  class="absolute left-[66px]  lg:left-[272px] border-2 border-white h-[3px] lg:h-[5px] w-[3px] lg:w-[5px] bg-red-500 p-2 rounded-full "></div>
-    <img class="h-[50px] w-[50px] lg:h-[70px] lg:w-[70px] rounded-md lg:rounded-2xl" src="${post?.image}" alt="">
-    </div>
-    <div class="w-full">
-    <p class="text-[#12132DCC] font-inter text-sm font-medium mb-0"><span class="mr-5"># ${post?.category}</span>Author: ${post.author.name}</p>
-    <h3 class="text-xl font-bold text-color-primary mt-2 mb-3">${post?.title}</h3>
-    <p class="font-inter mt-0 pb-5 border-b-2 border-dashed  border-gray-300 text-description-color ">${post?.description}</p>
-
-    <div class=" flex justify-between items-center pt-5 w-full">
-        <div class="font-inter text-description-color">
-        <span><i class="fa-regular fa-message"></i> ${post?.comment_count}</span>
-        <span><i class="fa-regular fa-eye ml-6"></i> ${post?.view_count}</span>
-        <span><i class="fa-regular fa-clock ml-6"></i> ${post?.posted_time} min</span>
-        
         </div>
-        <div>
-        
-        <button onclick = "handleMarkAsReadBtn('${post?.title}' , '${post?.view_count}')" class="btn bg-green-500 text-white px-4 rounded-full read-btn"><i class=" fa-solid fa-envelope-open"></i></button>  
+        `;
+    
+        toggleLoading(false)
+        postsContainer.appendChild(postCard)
+        }else{
+            // console.log('offline');
+            const postCard = document.createElement('div') 
+    
+        postCard.classList =  `flex gap-2 md:gap-4 lg:gap-6 p-4 md:p-6 lg:p-10 border rounded-3xl shadow-xl hover:border-[#797DFC] bg-[#12132D0D] hover:bg-[#797DFC1A]`
+        postCard.innerHTML = `
+        <div  class="absolute left-[66px]  lg:left-[272px] border-2 border-white h-[3px] lg:h-[5px] w-[3px] lg:w-[5px] bg-red-500 p-2 rounded-full "></div>
+        <img class="h-[50px] w-[50px] lg:h-[70px] lg:w-[70px] rounded-md lg:rounded-2xl" src="${post?.image}" alt="">
         </div>
+        <div class="w-full">
+        <p class="text-[#12132DCC] font-inter text-sm font-medium mb-0"><span class="mr-5"># ${post?.category}</span>Author: ${post.author.name}</p>
+        <h3 class="text-xl font-bold text-color-primary mt-2 mb-3">${post?.title}</h3>
+        <p class="font-inter mt-0 pb-5 border-b-2 border-dashed  border-gray-300 text-description-color ">${post?.description}</p>
+    
+        <div class=" flex justify-between items-center pt-5 w-full">
+            <div class="font-inter text-description-color">
+            <span><i class="fa-regular fa-message"></i> ${post?.comment_count}</span>
+            <span><i class="fa-regular fa-eye ml-6"></i> ${post?.view_count}</span>
+            <span><i class="fa-regular fa-clock ml-6"></i> ${post?.posted_time} min</span>
+            
+            </div>
+            <div>
+            
+            <button onclick = "handleMarkAsReadBtn('${post?.title}' , '${post?.view_count}')" class="btn bg-green-500 text-white px-4 rounded-full read-btn"><i class=" fa-solid fa-envelope-open"></i></button>  
+            </div>
+            
+        </div>
+        </div>
+        `;
+        postsContainer.appendChild(postCard)
+        }
+    
         
-    </div>
-    </div>
-    `;
-    postsContainer.appendChild(postCard)
+    })
     }
 
-    
-})
-}
+// setTimeout(()=>{
+
+// })
 
 
 const handleMarkAsReadBtn = (heading, views) =>{
@@ -128,56 +139,6 @@ const getConvertedValue = (id)=>{
 }
 
 
-
-
-
-// =============================== pray hoye gece
-// const handleMarkAsReadBtn = () =>{
-//     const allReadBtn = document.getElementsByClassName('read-btn')
-//  console.log(readBtn);
-
-//     for(const btn of allReadBtn){
-//         btn.addEventListener('click', function(e){
-
-//             const headingText = e.target.parentNode.parentNode.parentNode.childNodes[3].innerText;
-//             const viewCountNum = e.target.parentNode.parentNode.parentNode.childNodes[7].childNodes[1].childNodes[3].innerText;
-
-
-//             
-
-//             
-
-
-
-//             
-
-
-
-
-
-
-//             
-
-
-//         //     
-//const heading = document.getElementById('heading');
-//heading.innerText = headingText;
-
-//const viewCountNum = e.target.parentNode.parentNode.parentNode.childNodes[7].childNodes[1].childNodes[3].innerText
-
-
-//         //     const viewCount = document.getElementById('view-count');
-//             // viewCount.innerHTML = 
-//             // `
-
-//             // `
-
-
-//             // ;
-
-//         })
-//     }
-// }
 
 
 
@@ -228,15 +189,44 @@ const displayLatestPost = (posts) =>{
         `
 
 
-       
 
         latestPostContainer.appendChild(postDiv)
 
     })
 }
 
+// handle search button
+const handleSearchBtn =async () =>{
+    toggleLoading(true)
+    const searchField = document.getElementById('search-field')
+    const searchFieldText = searchField.value;
+    // console.log(searchFieldText);
+
+    const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts?category=${searchFieldText}`)
+    const data = await res.json()
+    const posts = data.posts
+    // console.log(posts);
+
+    const postsContainer = document.getElementById('posts-container');
+    postsContainer.innerText = ''
+    setTimeout(() => {
+        displayPosts(posts)
+    }, 2000);
+    
+
+    
+
+}
 
 
+const toggleLoading = (isLoading)=>{
+    const loading = document.getElementById('loading');
+    if(isLoading){
+        loading.classList.remove('hidden')
+    }else{
+        loading.classList.add('hidden')
+    }
+}
 
 loadLatestPosts()
 
